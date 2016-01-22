@@ -68,3 +68,11 @@ render();
 ```
 
 The example on the [THREE.js website](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene) does show you how to animate this, but I think this is the absolute minimum starting point. Now we have learned how to appropriate other people's online tutorials, we can move on to more fun!
+
+
+####Glossary
+Code is great, but I think with something as mind-bending as working out `THREE.js`, it is good to get an understanding of the principles behind 3D, even if just to understand what people are going on about in forums and blog posts. Starting from the smallest:
+
+**Vertex**
+
+

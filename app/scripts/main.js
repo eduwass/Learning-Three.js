@@ -18,9 +18,11 @@ var renderer = new THREE.WebGLRenderer();
 // Add to the DOM...
 document.body.appendChild( renderer.domElement );
 
+//
 var geometry = new THREE.IcosahedronGeometry();
 var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 var shape = new THREE.Mesh( geometry, material );
+
 scene.add( shape );
 
 // var geometry = new THREE.IcosahedronGeometry();
