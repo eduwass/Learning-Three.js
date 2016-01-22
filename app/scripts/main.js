@@ -9,19 +9,27 @@ var scene = new THREE.Scene();
 
 // Add a camera
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+    camera.position.z = 4;
 
 // Create the viewport for the scene to sit in
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+// Add to the DOM...
 document.body.appendChild( renderer.domElement );
 
 var geometry = new THREE.IcosahedronGeometry();
-var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } );
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 var shape = new THREE.Mesh( geometry, material );
 scene.add( shape );
 
-var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-scene.add( light );
+// var geometry = new THREE.IcosahedronGeometry();
+// var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } );
+// var shape = new THREE.Mesh( geometry, material );
+// scene.add( shape );
+
+// var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+// scene.add( light );
 
 // var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
 // dirLight.color.setHSL( 0.1, 1, 0.95 );
@@ -29,17 +37,15 @@ scene.add( light );
 // dirLight.position.multiplyScalar( 50 );
 // scene.add( dirLight );
 
-camera.position.z = 4;
-
 // For canceling the animation frame request...
-var animate;
+// var animate;
 
 var render = function () {
 
-  animate = requestAnimationFrame( render );
+  // animate = requestAnimationFrame( render );
 
-  shape.rotation.x += 0.05;
-  shape.rotation.y += 0.05;
+  // shape.rotation.x += 0.05;
+  // shape.rotation.y += 0.05;
 
   renderer.render(scene, camera);
 

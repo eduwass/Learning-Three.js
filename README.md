@@ -34,13 +34,37 @@ Next comes the `JavaScript`, first create a scene, a camera and a renderer. This
 var scene = new THREE.Scene();
 
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+	camera.position.z = 4;
 
 var renderer = new THREE.WebGLRenderer();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
 document.body.appendChild( renderer.domElement );
 ```
-There is a very good explanation of how to add a cube to this scene here from the [THREE.js website](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene). It explains the interaction of `WebGL` and `THREE.js`, to understand what `THREE.js` adds.
+
+There is a very good explanation of how to add a cube to this scene here from the [THREE.js website](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene). It explains the interaction of `WebGL` and `THREE.js`, to understand what `THREE.js` adds in terms of fallbacks and other cross-browser bonuses.
 
 
 ####Adding to a scene
+Without using and lights in your scene there is not much you can do, other than add flat shape. If you follow the tutorial in the link provided above, you can add a rotating cube. However, why add a cube when you can add an Icosahedron. That's what I always say, anyway!
+
+```
+var geometry = new THREE.IcosahedronGeometry();
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var shape = new THREE.Mesh( geometry, material );
+scene.add( shape );
+```
+
+The previous code creates a new geometry specific to our desired shape, gives it a material of a solid colour and adds it to our scene.
+
+The final necessary code to see something in the browser, is to create a function to render the camera and defined geometries in to the scene:
+
+```
+var render = function () {
+  renderer.render(scene, camera);
+};
+
+render();
+```
+
+The example on the [THREE.js website](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene) does show you how to animate this, but I think this is the absolute minimum starting point. Now we have learned how to appropriate other people's online tutorials, we can move on to more fun!
