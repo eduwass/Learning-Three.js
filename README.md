@@ -6,6 +6,5 @@ This is an idiots guide to THREE.js, for those who wish words like 'simple' were
 **NB:** This is heavily plagarised from the `THREE.js` Github, because they made `THREE.js`!
 
 ####Creating a scene 
-------
 
-#####The absolute start
+Ok, first is the `HMTL` used to house all the things you need. Here it is:
