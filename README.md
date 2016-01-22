@@ -1,12 +1,13 @@
 #Learning THREE.js
 
+
 ###Introduction
 This is an idiots guide to THREE.js, for those who wish words like 'simple' were removed from technical documentation. This aims to be the ultimate laymen's guide, with pictures to boot!
 
 **NB:** This is heavily plagarised from the `THREE.js` Github, because they made `THREE.js`!
 
-####Creating a scene 
 
+####Creating a scene 
 Ok, first is the `HMTL` used to house all the things you need. Here it is:
 
 ```
@@ -27,15 +28,19 @@ Ok, first is the `HMTL` used to house all the things you need. Here it is:
 </html>
 ```
 
-Next comes the `JavaScript`, first create a scene, a camera and a renderer. This are required for every `THREE.js` instance:
+Next comes the `JavaScript`, first create a scene, a camera and a renderer. This are required for every `THREE.js` instance. The output of the following code will create a `<canvas>` the full width and height of the browser viewport:
 
 ```
 var scene = new THREE.Scene();
 
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-var renderer = new THREE.WebGLRenderer(); renderer.setSize( window.innerWidth, window.innerHeight );
+var renderer = new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
 
 document.body.appendChild( renderer.domElement );
 ```
+There is a very good explanation of how to add a cube to this scene here from the [THREE.js website](http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene). It explains the interaction of `WebGL` and `THREE.js`, to understand what `THREE.js` adds.
 
+
+####Adding to a scene
