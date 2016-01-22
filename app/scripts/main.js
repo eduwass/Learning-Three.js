@@ -15,19 +15,19 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshLambertMaterial( { color: 0xdddddd, shading: THREE.FlatShading } );
-var cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+var geometry = new THREE.IcosahedronGeometry();
+var material = new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } );
+var shape = new THREE.Mesh( geometry, material );
+scene.add( shape );
 
 var light = new THREE.AmbientLight( 0x404040 ); // soft white light
 scene.add( light );
 
-var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
-dirLight.color.setHSL( 0.1, 1, 0.95 );
-dirLight.position.set( -1, 1.75, 1 );
-dirLight.position.multiplyScalar( 50 );
-scene.add( dirLight );
+// var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+// dirLight.color.setHSL( 0.1, 1, 0.95 );
+// dirLight.position.set( -1, 1.75, 1 );
+// dirLight.position.multiplyScalar( 50 );
+// scene.add( dirLight );
 
 camera.position.z = 4;
 
@@ -38,10 +38,11 @@ var render = function () {
 
   animate = requestAnimationFrame( render );
 
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  shape.rotation.x += 0.05;
+  shape.rotation.y += 0.05;
 
   renderer.render(scene, camera);
+
 };
 
 render();
