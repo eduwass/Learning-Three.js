@@ -11,44 +11,87 @@ var renderer = new THREE.WebGLRenderer(); renderer.setSize( window.innerWidth, w
 
 document.body.appendChild( renderer.domElement );
 
-var cube = function( x, y, z, posX, posY ) {
+// document.body.appendChild( renderer.domElement );
 
-  var geometry = new THREE.BoxGeometry( x, y, z );
+// var cube = function( x, y, z, posX, posY ) {
+
+//   var geometry = new THREE.BoxGeometry( x, y, z );
+//   var material = new THREE.MeshNormalMaterial();
+//   var cube = new THREE.Mesh( geometry, material );
+//       cube.position.setX(posX);
+//       cube.position.setY(posY);
+
+//   scene.add( cube );
+
+// };
+
+// var cubeGrid = function(cubeYOffset) {
+
+//   var cubeXOffset = 3;
+
+//   var row = function(cubeYOffset) {
+//     for (var i = -camera.position.z; i < camera.position.z; i++) {
+//       new cube( 1, 1, 1, i*cubeXOffset, cubeYOffset );
+//     }
+//   }
+
+//   for (var i = -camera.position.z; i < camera.position.z; i++) {
+//     var cubeYOffset = 3 * i;
+//     new row(cubeYOffset);
+//   }
+
+// }
+
+// var cubeGrid = new cubeGrid();
+
+// var render = function () {
+
+//   requestAnimationFrame( render );
+
+//   for (var i = 0; i < scene.children.length; i++) {
+//     scene.children[i].rotation.x += 0.05;
+//     scene.children[i].rotation.y += 0.05;
+//   }
+
+//   renderer.render(scene, camera);
+
+// };
+
+// render();
+
+var cylinder = function(offsetX, offsetY) {
+  var geometry = new THREE.CylinderGeometry( 1, 1, 1, 3, 1 );
   var material = new THREE.MeshNormalMaterial();
-  var cube = new THREE.Mesh( geometry, material );
-      cube.position.setX(posX);
-      cube.position.setY(posY);
+  var cylinder = new THREE.Mesh( geometry, material );
+      cylinder.position.x = offsetX;
+      cylinder.position.y = offsetY;
 
-  scene.add( cube );
+  scene.add( cylinder );
 
 };
 
-var cubeGrid = function(cubeYOffset) {
-
-  var cubeXOffset = 3;
-
-  var row = function(cubeYOffset) {
+var cylinderGrid = function() {
+  var row = function(offsetY) {
+    var offsetX = 3;
     for (var i = -camera.position.z; i < camera.position.z; i++) {
-      new cube( 1, 1, 1, i*cubeXOffset, cubeYOffset );
+      new cylinder(offsetX*i, offsetY);
     }
   }
-
   for (var i = -camera.position.z; i < camera.position.z; i++) {
-    var cubeYOffset = 3 * i;
-    new row(cubeYOffset);
+    var offsetY = 3 * i;
+    new row(offsetY);
   }
-
 }
 
-var cubeGrid = new cubeGrid();
+new cylinderGrid();
 
 var render = function () {
 
   requestAnimationFrame( render );
 
   for (var i = 0; i < scene.children.length; i++) {
-    scene.children[i].rotation.x += 0.05;
-    scene.children[i].rotation.y += 0.05;
+    scene.children[i].rotation.x += 0.025;
+    scene.children[i].rotation.y += 0.025;
   }
 
   renderer.render(scene, camera);
