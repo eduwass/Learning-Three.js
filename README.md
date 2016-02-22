@@ -76,3 +76,6 @@ Code is great, but I think with something as mind-bending as working out `THREE.
 **Vertex**
 
 
+###Examples
+
+1. 
