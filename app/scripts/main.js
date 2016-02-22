@@ -11,7 +11,11 @@ var renderer = new THREE.WebGLRenderer(); renderer.setSize( window.innerWidth, w
 
 document.body.appendChild( renderer.domElement );
 
-// document.body.appendChild( renderer.domElement );
+/*
+
+  CUBE GRID
+
+*/
 
 // var cube = function( x, y, z, posX, posY ) {
 
@@ -44,20 +48,11 @@ document.body.appendChild( renderer.domElement );
 
 // var cubeGrid = new cubeGrid();
 
-// var render = function () {
+/*
 
-//   requestAnimationFrame( render );
+  PRISM GRID
 
-//   for (var i = 0; i < scene.children.length; i++) {
-//     scene.children[i].rotation.x += 0.05;
-//     scene.children[i].rotation.y += 0.05;
-//   }
-
-//   renderer.render(scene, camera);
-
-// };
-
-// render();
+*/
 
 var cylinder = function(offsetX, offsetY) {
   var geometry = new THREE.CylinderGeometry( 1, 1, 1, 3, 1 );
@@ -85,6 +80,12 @@ var cylinderGrid = function() {
 
 new cylinderGrid();
 
+/*
+
+  RENDERER
+
+*/
+
 var render = function () {
 
   requestAnimationFrame( render );
@@ -99,3 +100,15 @@ var render = function () {
 };
 
 render();
+
+/*
+
+  CLEAR SCENE
+
+*/
+
+var clear = function() {
+
+
+
+}
