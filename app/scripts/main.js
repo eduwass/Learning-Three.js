@@ -39,11 +39,26 @@ $('.rotating-prism-grid').on('click', function() {
 */
 
 var scene = new THREE.Scene();
+
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-    camera.position.z = 20;
+    camera.position.z = 10;
+
 var renderer = new THREE.WebGLRenderer(); renderer.setSize( window.innerWidth, window.innerHeight );
 
 document.body.appendChild( renderer.domElement );
+
+/*
+
+  LIGHTS
+
+*/
+
+scene.add( new THREE.AmbientLight( 0xcccccc ) );
+
+var pointLight = new THREE.PointLight( 0xff4400, 5, 30 );
+    pointLight.position.set( 5, 0, 0 );
+
+scene.add( pointLight );
 
 /*
 
@@ -116,15 +131,11 @@ var prismGrid = function() {
 
 */
 
-// instantiate a loader
 var loader = new THREE.JSONLoader();
 
-// load a resource
-loader.load(
-  // resource URL
-  'assets/meteor.json',
-  // Function when resource is loaded
-  function ( geometry, materials ) {
+loader.load('assets/meteor.json', function ( geometry, materials ) {
+    console.log( geometry );
+    console.log( materials );
     var material = new THREE.MultiMaterial( materials );
     var object = new THREE.Mesh( geometry, material );
     scene.add( object );
