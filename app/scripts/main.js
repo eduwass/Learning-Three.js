@@ -6,7 +6,7 @@
 
 $(document).on('ready', function() {
 
-  prismGrid();
+  // prismGrid();
 
 });
 
@@ -109,6 +109,27 @@ var prismGrid = function() {
     row(offsetY);
   }
 }
+
+/*
+
+  JSON LOADER
+
+*/
+
+// instantiate a loader
+var loader = new THREE.JSONLoader();
+
+// load a resource
+loader.load(
+  // resource URL
+  'assets/meteor.json',
+  // Function when resource is loaded
+  function ( geometry, materials ) {
+    var material = new THREE.MultiMaterial( materials );
+    var object = new THREE.Mesh( geometry, material );
+    scene.add( object );
+  }
+);
 
 /*
 
