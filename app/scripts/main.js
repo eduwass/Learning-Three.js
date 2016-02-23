@@ -1,5 +1,17 @@
 /*
 
+  INITITAL
+
+*/
+
+$(document).on('ready', function() {
+
+  prismGrid();
+
+});
+
+/*
+
   MENU EVENTS
 
 */
