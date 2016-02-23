@@ -1,5 +1,27 @@
 /*
 
+  MENU EVENTS
+
+*/
+
+$('.rotating-cube-grid').on('click', function() {
+
+  clear();
+
+  cubeGrid();
+
+});
+
+$('.rotating-prism-grid').on('click', function() {
+
+  clear();
+
+  prismGrid();
+
+});
+
+/*
+
   THREE.JS
 
 */
@@ -17,36 +39,34 @@ document.body.appendChild( renderer.domElement );
 
 */
 
-// var cube = function( x, y, z, posX, posY ) {
+var cube = function( x, y, z, posX, posY ) {
 
-//   var geometry = new THREE.BoxGeometry( x, y, z );
-//   var material = new THREE.MeshNormalMaterial();
-//   var cube = new THREE.Mesh( geometry, material );
-//       cube.position.setX(posX);
-//       cube.position.setY(posY);
+  var geometry = new THREE.BoxGeometry( x, y, z );
+  var material = new THREE.MeshNormalMaterial();
+  var cube = new THREE.Mesh( geometry, material );
+      cube.position.setX(posX);
+      cube.position.setY(posY);
 
-//   scene.add( cube );
+  scene.add( cube );
 
-// };
+};
 
-// var cubeGrid = function(cubeYOffset) {
+var cubeGrid = function(cubeYOffset) {
 
-//   var cubeXOffset = 3;
+  var cubeXOffset = 3;
 
-//   var row = function(cubeYOffset) {
-//     for (var i = -camera.position.z; i < camera.position.z; i++) {
-//       new cube( 1, 1, 1, i*cubeXOffset, cubeYOffset );
-//     }
-//   }
+  var row = function(cubeYOffset) {
+    for (var i = -camera.position.z; i < camera.position.z; i++) {
+      cube( 1.25, 1.25, 1.25, i*cubeXOffset, cubeYOffset );
+    }
+  }
 
-//   for (var i = -camera.position.z; i < camera.position.z; i++) {
-//     var cubeYOffset = 3 * i;
-//     new row(cubeYOffset);
-//   }
+  for (var i = -camera.position.z; i < camera.position.z; i++) {
+    var cubeYOffset = 3 * i;
+    row(cubeYOffset);
+  }
 
-// }
-
-// var cubeGrid = new cubeGrid();
+}
 
 /*
 
@@ -54,31 +74,29 @@ document.body.appendChild( renderer.domElement );
 
 */
 
-var cylinder = function(offsetX, offsetY) {
+var prism = function(offsetX, offsetY) {
   var geometry = new THREE.CylinderGeometry( 1, 1, 1, 3, 1 );
   var material = new THREE.MeshNormalMaterial();
-  var cylinder = new THREE.Mesh( geometry, material );
-      cylinder.position.x = offsetX;
-      cylinder.position.y = offsetY;
+  var prism = new THREE.Mesh( geometry, material );
+      prism.position.x = offsetX;
+      prism.position.y = offsetY;
 
-  scene.add( cylinder );
+  scene.add( prism );
 
 };
 
-var cylinderGrid = function() {
+var prismGrid = function() {
   var row = function(offsetY) {
     var offsetX = 3;
     for (var i = -camera.position.z; i < camera.position.z; i++) {
-      new cylinder(offsetX*i, offsetY);
+      prism(offsetX*i, offsetY);
     }
   }
   for (var i = -camera.position.z; i < camera.position.z; i++) {
     var offsetY = 3 * i;
-    new row(offsetY);
+    row(offsetY);
   }
 }
-
-new cylinderGrid();
 
 /*
 
@@ -109,6 +127,9 @@ render();
 
 var clear = function() {
 
-
+  for ( var i = scene.children.length - 1; i >= 0; i--) {
+    var obj = scene.children[i];
+    scene.remove(obj);
+  }
 
 }
